@@ -1,0 +1,3 @@
+entity dflipflop is
+	port(clk, rst, set, d : in bit; q : out bit);
+end dflipflop;
