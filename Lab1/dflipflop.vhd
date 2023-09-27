@@ -17,6 +17,7 @@ ARCHITECTURE rtl OF dflipflop IS
 	SIGNAL int_d, int_dBar : STD_LOGIC;
 	SIGNAL int_notD, int_notClock : STD_LOGIC;
 	SIGNAL int_mux_d : STD_LOGIC;
+	SIGNAL int_q_or_async, int_qBar_or_async, int_clock_or_async : STD_LOGIC;
 	COMPONENT enabledSRLatch
 	PORT(
 		i_set, i_reset : IN STD_LOGIC;
@@ -39,9 +40,9 @@ BEGIN
 		o_q => int_q,
 		o_qBar => int_qBar);
 	slaveLatch: enabledSRLatch
-	PORT MAP ( i_set => int_q,
-		i_reset => int_qBar,
-		i_enable => i_clock,
+	PORT MAP ( i_set => int_q_or_async,
+		i_reset => int_qBar_or_async,
+		i_enable => int_clock_or_async,
 		o_q => int_final_q,
 		o_qBar => o_qBar);
 	enableMux: twoonemux
@@ -53,6 +54,9 @@ BEGIN
 	);
 
 	-- Concurrent Signal Assignment
+	int_q_or_async <= (int_q or i_async_set) and not i_async_reset;
+	int_qBar_or_async <= int_qBar or i_async_reset;
+	int_clock_or_async <= i_clock or i_async_set or i_async_reset;
 	int_notD <= not(int_mux_d);
 	int_notClock <= not(i_clock);
 	o_q <= int_final_q;
