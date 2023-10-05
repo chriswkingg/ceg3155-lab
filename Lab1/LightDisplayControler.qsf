@@ -3,14 +3,13 @@ set_global_assignment -name TOP_LEVEL_ENTITY LightDisplayControler
 # Build by Altera University Program
 #============================================================
 set_global_assignment -name FAMILY "Cyclone IV E"
-set_global_assignment -name DEVICE EP4CE115F29C8
+set_global_assignment -name DEVICE EP4CE115F29C7
 set_global_assignment -name USE_GENERATED_PHYSICAL_CONSTRAINTS OFF -section_id eda_blast_fpga
 set_global_assignment -name CYCLONEII_RESERVE_NCEO_AFTER_CONFIGURATION "USE AS REGULAR IO"
 
 #============================================================
 # CLOCK
 #============================================================
-set_location_assignment PIN_Y2 -to CLOCK_50
 set_location_assignment PIN_AG14 -to CLOCK2_50
 set_location_assignment PIN_AG15 -to CLOCK3_50
 set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to CLOCK_50
@@ -29,14 +28,6 @@ set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to SMA_CLKOUT
 #============================================================
 # LED
 #============================================================
-set_location_assignment PIN_E21 -to LEDG[0]
-set_location_assignment PIN_E22 -to LEDG[1]
-set_location_assignment PIN_E25 -to LEDG[2]
-set_location_assignment PIN_E24 -to LEDG[3]
-set_location_assignment PIN_H21 -to LEDG[4]
-set_location_assignment PIN_G20 -to LEDG[5]
-set_location_assignment PIN_G22 -to LEDG[6]
-set_location_assignment PIN_G21 -to LEDG[7]
 set_location_assignment PIN_F17 -to LEDG[8]
 set_instance_assignment -name IO_STANDARD "2.5 V" -to LEDG[0]
 set_instance_assignment -name IO_STANDARD "2.5 V" -to LEDG[1]
@@ -88,7 +79,6 @@ set_instance_assignment -name IO_STANDARD "2.5 V" -to LEDR[17]
 #============================================================
 # KEY
 #============================================================
-set_location_assignment PIN_M23 -to KEY[0]
 set_location_assignment PIN_M21 -to KEY[1]
 set_location_assignment PIN_N21 -to KEY[2]
 set_location_assignment PIN_R24 -to KEY[3]
@@ -100,9 +90,6 @@ set_instance_assignment -name IO_STANDARD "2.5 V" -to KEY[3]
 #============================================================
 # SW
 #============================================================
-set_location_assignment PIN_AB28 -to SW[0]
-set_location_assignment PIN_AC28 -to SW[1]
-set_location_assignment PIN_AC27 -to SW[2]
 set_location_assignment PIN_AD27 -to SW[3]
 set_location_assignment PIN_AB27 -to SW[4]
 set_location_assignment PIN_AC26 -to SW[5]
@@ -1166,17 +1153,55 @@ set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to EXT_IO[6]
 #============================================================
 
 
+
+
+
+set_global_assignment -name LAST_QUARTUS_VERSION "13.0 SP1"
+set_global_assignment -name STRATIX_DEVICE_IO_STANDARD "2.5 V"
+set_global_assignment -name MIN_CORE_JUNCTION_TEMP 0
+set_global_assignment -name MAX_CORE_JUNCTION_TEMP 85
+set_location_assignment PIN_E21 -to Display0
+set_location_assignment PIN_E22 -to Display1
+set_location_assignment PIN_E25 -to Display2
+set_location_assignment PIN_E24 -to Display3
+set_location_assignment PIN_H21 -to Display4
+set_location_assignment PIN_G20 -to Display5
+set_location_assignment PIN_G22 -to Display6
+set_location_assignment PIN_G21 -to Display7
+set_location_assignment PIN_AB28 -to Right
+set_location_assignment PIN_AC28 -to Left
+set_location_assignment PIN_M23 -to GClock
+set_location_assignment PIN_AC27 -to GReset
+set_global_assignment -name VECTOR_WAVEFORM_FILE testlightdisplaycontroller.vwf
+set_global_assignment -name VECTOR_WAVEFORM_FILE testeightbitshiftregisterstructural.vwf
+set_global_assignment -name VECTOR_WAVEFORM_FILE testeightbitfourtoonemux.vwf
+set_global_assignment -name VECTOR_WAVEFORM_FILE testdffenable.vwf
+set_global_assignment -name VECTOR_WAVEFORM_FILE testdffasync.vwf
+set_global_assignment -name BDF_FILE LightDisplayControler.bdf
+set_global_assignment -name VHDL_FILE twoonemux.vhd
+set_global_assignment -name VHDL_FILE fouronemux.vhd
+set_global_assignment -name VHDL_FILE enabledSRLatch.vhd
+set_global_assignment -name VHDL_FILE eightbittwotoonemux.vhd
+set_global_assignment -name VHDL_FILE eightBitShiftRegisterStructural.vhd
+set_global_assignment -name VHDL_FILE eightbitfourtoonemux.vhd
+set_global_assignment -name VHDL_FILE dflipflop.vhd
+set_global_assignment -name VHDL_FILE datapath.vhd
+set_global_assignment -name VHDL_FILE controlpath.vhd
+set_global_assignment -name SIMULATION_MODE FUNCTIONAL
+set_global_assignment -name EDA_SIMULATION_TOOL "ModelSim-Altera (Verilog)"
+set_global_assignment -name EDA_OUTPUT_DATA_FORMAT "VERILOG HDL" -section_id eda_simulation
+set_global_assignment -name EDA_GENERATE_FUNCTIONAL_NETLIST ON -section_id eda_simulation
+set_global_assignment -name INCREMENTAL_VECTOR_INPUT_SOURCE "C:/Users/cking028/Desktop/Lab1/testdffasync.vwf"
+set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
+set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_ROUTING -section_id Top
+set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
 set_instance_assignment -name FAST_INPUT_REGISTER ON -to *
 set_instance_assignment -name FAST_OUTPUT_REGISTER ON -to *
 set_instance_assignment -name TSU_REQUIREMENT "10 ns" -from * -to *
-
 set_instance_assignment -name IO_MAXIMUM_TOGGLE_RATE "0 MHz" -to HEX3
 set_instance_assignment -name IO_MAXIMUM_TOGGLE_RATE "0 MHz" -to HEX2
 set_instance_assignment -name IO_MAXIMUM_TOGGLE_RATE "0 MHz" -to HEX0
 set_instance_assignment -name IO_MAXIMUM_TOGGLE_RATE "0 MHz" -to HEX1
 set_instance_assignment -name IO_MAXIMUM_TOGGLE_RATE "0 MHz" -to KEY
 set_instance_assignment -name IO_MAXIMUM_TOGGLE_RATE "0 MHz" -to SW
-
-
-set_global_assignment -name LAST_QUARTUS_VERSION "13.0 SP1"
-set_global_assignment -name STRATIX_DEVICE_IO_STANDARD "2.5 V"
+set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top
