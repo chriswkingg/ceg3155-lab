@@ -5,7 +5,7 @@ ENTITY fourbitcomparator IS
     PORT (
         i_a : IN STD_LOGIC_VECTOR(3 DOWNTO 0);
         i_b : IN STD_LOGIC_VECTOR(3 DOWNTO 0);
-        o_gt, o_lt, o_eq : OUT STD_LOGIC_VECTOR(3 DOWNTO 0)
+        o_gt, o_lt, o_eq : OUT STD_LOGIC
     );
 END fourbitcomparator;
 

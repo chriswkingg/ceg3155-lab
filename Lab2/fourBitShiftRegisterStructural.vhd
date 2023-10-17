@@ -3,7 +3,7 @@ USE ieee.std_logic_1164.ALL;
 
 ENTITY fourBitShiftRegister IS
     PORT (
-        i_resetBar, i_load, i_shiftLeft, i_shiftRight, i_leftShiftIn : IN STD_LOGIC;
+        i_resetBar, i_load, i_shiftLeft, i_shiftRight, i_leftShiftIn, i_rightShiftIn : IN STD_LOGIC;
         i_clock : IN STD_LOGIC;
         i_Value : IN STD_LOGIC_VECTOR(3 DOWNTO 0);
         o_Value : OUT STD_LOGIC_VECTOR(3 DOWNTO 0)
@@ -106,7 +106,7 @@ BEGIN
 
     mux3: fouronemux
     PORT MAP (
-        w0 => q_out(4),
+        w0 => i_rightShiftIn,
         w1 => q_out(2),
         w2 => i_value(3),
         w3 => '0',
