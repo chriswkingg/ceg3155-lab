@@ -5,7 +5,7 @@ ENTITY datapath IS
 	PORT (
 		 i_clock, i_reset, i_loadSign, i_clearSign, i_incrementCounter, i_clearCounter, i_loadDividend, i_leftShiftDividend, i_addSubDividend, i_clearRemainder, i_leftShiftRemainder, i_loadRemainder,i_loadDivisor, i_addSubDivisor, i_loadQuotient, i_rightShiftQuotient, i_rightShiftInQuotient, i_clearQuotient : IN STD_LOGIC;
 		 i_a, i_b : IN STD_LOGIC_VECTOR(3 DOWNTO 0);
-		 o_countgt, o_sign : OUT STD_LOGIC;
+		 o_countgt, o_remaindergteq, o_sign : OUT STD_LOGIC;
 		 o_result : OUT STD_LOGIC_VECTOR(3 DOWNTO 0)
 	);
 
@@ -177,7 +177,10 @@ BEGIN
         i_b => "0011",
         o_gt => int_countGT
     );
-	 
+	 o_result <= int_quotientOut;
+	 o_countgt <= int_countGT;
+	 o_remaindergteq <= int_remainderEQdivisor or int_remainderGTdivisor;
+	 o_sign <= int_signOutput;
 	 
 	 
 
