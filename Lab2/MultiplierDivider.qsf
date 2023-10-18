@@ -38,7 +38,7 @@
 
 set_global_assignment -name FAMILY "Cyclone IV E"
 set_global_assignment -name DEVICE EP4CE6E22C7
-set_global_assignment -name TOP_LEVEL_ENTITY fourbitaddsub
+set_global_assignment -name TOP_LEVEL_ENTITY control
 set_global_assignment -name ORIGINAL_QUARTUS_VERSION "13.0 SP1"
 set_global_assignment -name PROJECT_CREATION_TIME_DATE "22:40:11  OCTOBER 10, 2023"
 set_global_assignment -name LAST_QUARTUS_VERSION "13.0 SP1"
@@ -47,16 +47,32 @@ set_global_assignment -name MIN_CORE_JUNCTION_TEMP 0
 set_global_assignment -name MAX_CORE_JUNCTION_TEMP 85
 set_global_assignment -name ERROR_CHECK_FREQUENCY_DIVISOR 1
 set_global_assignment -name NOMINAL_CORE_SUPPLY_VOLTAGE 1.2V
-set_global_assignment -name VHDL_FILE onebitfa.vhd
-set_global_assignment -name VECTOR_WAVEFORM_FILE testonebitfa.vwf
 set_global_assignment -name SIMULATION_MODE FUNCTIONAL
 set_global_assignment -name EDA_SIMULATION_TOOL "ModelSim-Altera (Verilog)"
 set_global_assignment -name EDA_OUTPUT_DATA_FORMAT "VERILOG HDL" -section_id eda_simulation
 set_global_assignment -name EDA_GENERATE_FUNCTIONAL_NETLIST ON -section_id eda_simulation
+set_global_assignment -name POWER_PRESET_COOLING_SOLUTION "23 MM HEAT SINK WITH 200 LFPM AIRFLOW"
+set_global_assignment -name POWER_BOARD_THERMAL_MODEL "NONE (CONSERVATIVE)"
+set_global_assignment -name VHDL_FILE twoonemux.vhd
+set_global_assignment -name VHDL_FILE fourBitShiftRegisterStructural.vhd
+set_global_assignment -name VHDL_FILE fourbitcomparator.vhd
+set_global_assignment -name VHDL_FILE enabledSRLatch.vhd
+set_global_assignment -name VHDL_FILE dflipflop.vhd
+set_global_assignment -name VHDL_FILE datapath.vhd
+set_global_assignment -name VHDL_FILE onebitfa.vhd
+set_global_assignment -name VECTOR_WAVEFORM_FILE testonebitfa.vwf
 set_global_assignment -name VHDL_FILE fourbitaddsub.vhd
+set_global_assignment -name VECTOR_WAVEFORM_FILE fourbitaddsub.vwf
+set_global_assignment -name VECTOR_WAVEFORM_FILE testfourbitcomparator.vwf
+set_global_assignment -name VHDL_FILE fourbitcounter.vhd
+set_global_assignment -name VHDL_FILE jkflipflop.vhd
+set_global_assignment -name VECTOR_WAVEFORM_FILE testfourbitcounter.vwf
+set_global_assignment -name VHDL_FILE msjkflipflop.vhd
+set_global_assignment -name VECTOR_WAVEFORM_FILE testmsjkflipflop.vwf
+set_global_assignment -name VECTOR_WAVEFORM_FILE testjkflipflop.vwf
+set_global_assignment -name INCREMENTAL_VECTOR_INPUT_SOURCE "C:/Users/chris/Desktop/ceg3155-lab/Lab2/testfourbitcounter.vwf"
+set_global_assignment -name VHDL_FILE control.vhd
 set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
 set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_ROUTING -section_id Top
 set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
 set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top
-set_global_assignment -name VECTOR_WAVEFORM_FILE fourbitaddsub.vwf
-set_global_assignment -name INCREMENTAL_VECTOR_INPUT_SOURCE "C:/Users/chris/Desktop/CEG3155/Lab2/fourbitaddsub.vwf"
