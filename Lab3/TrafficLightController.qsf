@@ -37,8 +37,8 @@
 
 
 set_global_assignment -name FAMILY "Cyclone IV E"
-set_global_assignment -name DEVICE EP4CE115F29C7
-set_global_assignment -name TOP_LEVEL_ENTITY counter
+set_global_assignment -name DEVICE EP4CE115F29C8
+set_global_assignment -name TOP_LEVEL_ENTITY TrafficLightController
 set_global_assignment -name ORIGINAL_QUARTUS_VERSION "13.0 SP1"
 set_global_assignment -name PROJECT_CREATION_TIME_DATE "21:11:54  NOVEMBER 07, 2023"
 set_global_assignment -name LAST_QUARTUS_VERSION "13.0 SP1"
@@ -60,9 +60,27 @@ set_global_assignment -name EDA_GENERATE_FUNCTIONAL_NETLIST ON -section_id eda_s
 set_global_assignment -name MIN_CORE_JUNCTION_TEMP 0
 set_global_assignment -name MAX_CORE_JUNCTION_TEMP 85
 set_global_assignment -name VHDL_FILE counter.vhd
+set_global_assignment -name VECTOR_WAVEFORM_FILE TestCounter.vwf
+set_global_assignment -name STRATIX_DEVICE_IO_STANDARD "2.5 V"
+set_location_assignment PIN_N25 -to MSC0
+set_location_assignment PIN_N26 -to MSC1
+set_location_assignment PIN_P25 -to MSC2
+set_location_assignment PIN_AA24 -to MSC3
+set_location_assignment PIN_AB23 -to MSTL0
+set_location_assignment PIN_Y23 -to SSC0
+set_location_assignment PIN_Y24 -to SSC1
+set_location_assignment PIN_AA22 -to SSC2
+set_location_assignment PIN_AA23 -to SSC3
+set_location_assignment PIN_M21 -to SSCS
+set_location_assignment PIN_AB24 -to MSTL1
+set_location_assignment PIN_AC24 -to MSTL2
+set_location_assignment PIN_E24 -to SSTL0
+set_location_assignment PIN_H21 -to SSTL1
+set_location_assignment PIN_A14 -to G_Clock
+set_location_assignment PIN_M23 -to G_Reset
+set_location_assignment PIN_G20 -to SSTL2
+set_global_assignment -name INCREMENTAL_VECTOR_INPUT_SOURCE "C:/Users/chris/Desktop/ceg3155-lab/Lab3/TestFSMController.vwf"
 set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
 set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_ROUTING -section_id Top
 set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
 set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top
-set_global_assignment -name VECTOR_WAVEFORM_FILE TestCounter.vwf
-set_global_assignment -name INCREMENTAL_VECTOR_INPUT_SOURCE "C:/Users/chris/Desktop/ceg3155-lab/Lab3/TestCounter.vwf"
