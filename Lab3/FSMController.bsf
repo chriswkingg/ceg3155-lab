@@ -86,6 +86,13 @@ applicable agreement for further details.
 		(text "o_SSTL[2..0]" (rect 181 91 235 103)(font "Arial" ))
 		(line (pt 256 96)(pt 240 96)(line_width 3))
 	)
+	(port
+		(pt 256 112)
+		(output)
+		(text "o_s[2..0]" (rect 0 0 35 12)(font "Arial" ))
+		(text "o_s[2..0]" (rect 200 107 235 119)(font "Arial" ))
+		(line (pt 256 112)(pt 240 112)(line_width 3))
+	)
 	(drawing
 		(rectangle (rect 16 16 240 128)(line_width 1))
 	)
