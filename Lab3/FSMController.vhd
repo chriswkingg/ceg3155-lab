@@ -4,6 +4,8 @@ USE ieee.std_logic_1164.ALL;
 ENTITY FSMController IS
 PORT(
 	i_clock, i_reset, i_sscs, i_timerExpired : IN STD_LOGIC;
+	o_loadCounter, o_enableCounter : OUT STD_LOGIC;
+	o_comparatorSelect : OUT STD_LOGIC_VECTOR(1 DOWNTO 0);
 	o_MSTL, o_SSTL : OUT STD_LOGIC_VECTOR(2 DOWNTO 0));
 END FSMController;
 
@@ -63,7 +65,11 @@ BEGIN
 	o_SSTL(1) <= int_s(2) and (not int_s(1));
 	o_SSTL(2) <= not int_s(2);
 	
+	-- aux control signals
+	o_loadCounter <= ((not int_s(2)) and (not int_s(1)) and (not int_s(0))) or ((not int_s(2)) and int_s(1) and (not int_s(0))) or (int_s(2) and int_s(1) and (not int_s(0))) or (int_s(2) and int_s(1) and int_s(0));
+	o_enableCounter <= (not int_s(1) and int_s(0)) or (int_s(2) and (not int_s(1))) or ((not int_s(2)) and int_s(1) and (not int_s(0)));
 	
-	
-	
+	o_comparatorSelect(0) <= ((not int_s(2)) and int_s(1)) or (int_s(2) and (not int_s(1)));
+	o_comparatorSelect(1) <= int_s(2);
+
 END structural;
