@@ -3,7 +3,7 @@ USE ieee.std_logic_1164.ALL;
 
 ENTITY TransmitterController IS
     PORT (
-        i_resetBar : IN STD_LOGIC;
+        i_reset : IN STD_LOGIC;
         i_clock : IN STD_LOGIC;
         i_TDRE : IN STD_LOGIC;
         o_setTDRE, o_resetTDRE, o_rightShiftTSR, o_SO0, o_SO1, o_loadTDR, o_loadTSR : OUT STD_LOGIC;
@@ -31,7 +31,7 @@ BEGIN
 		  i_d => (int_s(0) and (not i_TDRE)) or int_s(11),
 		  i_clock => i_clock,
 		  i_enable => '1',
-		  i_async_set => i_resetBar,
+		  i_async_set => i_reset,
 		  i_async_reset => '0',
 		  o_q => int_s(0),
 		  o_qBar => open
@@ -42,7 +42,7 @@ BEGIN
 			  i_clock => i_clock,
 			  i_enable => '1',
 			  i_async_set => '0',
-			  i_async_reset => i_resetBar,
+			  i_async_reset => i_reset,
 			  o_q => int_s(1),
 			  o_qBar => open
 		 );
@@ -52,7 +52,7 @@ BEGIN
 			  i_clock => i_clock,
 			  i_enable => '1',
 			  i_async_set => '0',
-			  i_async_reset => i_resetBar,
+			  i_async_reset => i_reset,
 			  o_q => int_s(2),
 			  o_qBar => open
 		 );
@@ -62,7 +62,7 @@ BEGIN
 			  i_clock => i_clock,
 			  i_enable => '1',
 			  i_async_set => '0',
-			  i_async_reset => i_resetBar,
+			  i_async_reset => i_reset,
 			  o_q => int_s(3),
 			  o_qBar => open
 		 );
@@ -72,7 +72,7 @@ BEGIN
 			  i_clock => i_clock,
 			  i_enable => '1',
 			  i_async_set => '0',
-			  i_async_reset => i_resetBar,
+			  i_async_reset => i_reset,
 			  o_q => int_s(4),
 			  o_qBar => open
 		 );
@@ -82,7 +82,7 @@ BEGIN
 			  i_clock => i_clock,
 			  i_enable => '1',
 			  i_async_set => '0',
-			  i_async_reset => i_resetBar,
+			  i_async_reset => i_reset,
 			  o_q => int_s(5),
 			  o_qBar => open
 		 );
@@ -92,7 +92,7 @@ BEGIN
 			  i_clock => i_clock,
 			  i_enable => '1',
 			  i_async_set => '0',
-			  i_async_reset => i_resetBar,
+			  i_async_reset => i_reset,
 			  o_q => int_s(6),
 			  o_qBar => open
 		 );
@@ -102,7 +102,7 @@ BEGIN
 			  i_clock => i_clock,
 			  i_enable => '1',
 			  i_async_set => '0',
-			  i_async_reset => i_resetBar,
+			  i_async_reset => i_reset,
 			  o_q => int_s(7),
 			  o_qBar => open
 		 );
@@ -112,7 +112,7 @@ BEGIN
 			  i_clock => i_clock,
 			  i_enable => '1',
 			  i_async_set => '0',
-			  i_async_reset => i_resetBar,
+			  i_async_reset => i_reset,
 			  o_q => int_s(8),
 			  o_qBar => open
 		 );
@@ -122,7 +122,7 @@ BEGIN
 			  i_clock => i_clock,
 			  i_enable => '1',
 			  i_async_set => '0',
-			  i_async_reset => i_resetBar,
+			  i_async_reset => i_reset,
 			  o_q => int_s(9),
 			  o_qBar => open
 		 );
@@ -132,7 +132,7 @@ BEGIN
 			  i_clock => i_clock,
 			  i_enable => '1',
 			  i_async_set => '0',
-			  i_async_reset => i_resetBar,
+			  i_async_reset => i_reset,
 			  o_q => int_s(10),
 			  o_qBar => open
 		 );
@@ -142,7 +142,7 @@ BEGIN
 			  i_clock => i_clock,
 			  i_enable => '1',
 			  i_async_set => '0',
-			  i_async_reset => i_resetBar,
+			  i_async_reset => i_reset,
 			  o_q => int_s(11),
 			  o_qBar => open
 		 );
