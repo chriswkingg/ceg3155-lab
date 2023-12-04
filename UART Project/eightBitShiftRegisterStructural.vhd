@@ -3,7 +3,7 @@ USE ieee.std_logic_1164.ALL;
 
 ENTITY eightBitShiftRegisterStructural IS
     PORT (
-        i_resetBar, i_load, i_shiftLeft, i_shiftRight : IN STD_LOGIC;
+        i_reset, i_load, i_shiftLeft, i_shiftRight : IN STD_LOGIC;
         i_clock : IN STD_LOGIC;
         i_Value : IN STD_LOGIC_VECTOR(7 DOWNTO 0);
         o_Value : OUT STD_LOGIC_VECTOR(7 DOWNTO 0)
@@ -16,6 +16,7 @@ ARCHITECTURE structural OF eightBitShiftRegisterStructural IS
             i_d : IN STD_LOGIC;
             i_clock : IN STD_LOGIC;
             i_enable : IN STD_LOGIC;
+				i_async_reset : IN STD_LOGIC;
             o_q, o_qBar : OUT STD_LOGIC
         );
     END COMPONENT;
@@ -40,6 +41,7 @@ BEGIN
         i_d => d_in(0),
         i_clock => i_clock,
         i_enable => i_load or i_shiftLeft or i_shiftRight,
+		  i_async_reset => i_reset,
         o_q => q_out(0),
         o_qBar => open
     );
@@ -60,6 +62,7 @@ BEGIN
         i_d => d_in(1),
         i_clock => i_clock,
         i_enable => i_load or i_shiftLeft or i_shiftRight,
+		  i_async_reset => i_reset,
         o_q => q_out(1),
         o_qBar => open
     );
@@ -80,6 +83,7 @@ BEGIN
         i_d => d_in(2),
         i_clock => i_clock,
         i_enable => i_load or i_shiftLeft or i_shiftRight,
+		  i_async_reset => i_reset,
         o_q => q_out(2),
         o_qBar => open
     );
@@ -100,6 +104,7 @@ BEGIN
         i_d => d_in(3),
         i_clock => i_clock,
         i_enable => i_load or i_shiftLeft or i_shiftRight,
+		  i_async_reset => i_reset,
         o_q => q_out(3),
         o_qBar => open
     );
@@ -120,6 +125,7 @@ BEGIN
         i_d => d_in(4),
         i_clock => i_clock,
         i_enable => i_load or i_shiftLeft or i_shiftRight,
+		  i_async_reset => i_reset,
         o_q => q_out(4),
         o_qBar => open
     );
@@ -140,6 +146,7 @@ BEGIN
         i_d => d_in(5),
         i_clock => i_clock,
         i_enable => i_load or i_shiftLeft or i_shiftRight,
+		  i_async_reset => i_reset,
         o_q => q_out(5),
         o_qBar => open
     );
@@ -160,6 +167,7 @@ BEGIN
         i_d => d_in(6),
         i_clock => i_clock,
         i_enable => i_load or i_shiftLeft or i_shiftRight,
+		  i_async_reset => i_reset,
         o_q => q_out(6),
         o_qBar => open
     );
@@ -180,6 +188,7 @@ BEGIN
         i_d => d_in(7),
         i_clock => i_clock,
         i_enable => i_load or i_shiftLeft or i_shiftRight,
+		  i_async_reset => i_reset,
         o_q => q_out(7),
         o_qBar => open
     );
