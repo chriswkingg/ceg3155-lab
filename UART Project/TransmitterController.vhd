@@ -6,7 +6,7 @@ ENTITY TransmitterController IS
         i_reset : IN STD_LOGIC;
         i_clock : IN STD_LOGIC;
         i_TDRE : IN STD_LOGIC;
-        o_setTDRE, o_resetTDRE, o_rightShiftTSR, o_SO0, o_SO1, o_loadTDR, o_loadTSR : OUT STD_LOGIC;
+        o_setTDRE, o_rightShiftTSR, o_SO0, o_SO1, o_loadTSR : OUT STD_LOGIC;
 		  o_s : OUT STD_LOGIC_VECTOR(11 DOWNTO 0)
     );
 END TransmitterController;
@@ -28,7 +28,7 @@ ARCHITECTURE structural OF TransmitterController IS
 BEGIN
 	s0: dflipflop
 	 PORT MAP (
-		  i_d => (int_s(0) and (not i_TDRE)) or int_s(11),
+		  i_d => (int_s(0) and  i_TDRE) or int_s(11),
 		  i_clock => i_clock,
 		  i_enable => '1',
 		  i_async_set => i_reset,
@@ -38,7 +38,7 @@ BEGIN
 	 );
 		 s1: dflipflop
 		 PORT MAP (
-			  i_d => int_s(0) and i_TDRE,
+			  i_d => '0', -- UNUSED
 			  i_clock => i_clock,
 			  i_enable => '1',
 			  i_async_set => '0',
@@ -48,7 +48,7 @@ BEGIN
 		 );
 		 s2: dflipflop
 		 PORT MAP (
-			  i_d => int_s(1),
+			  i_d => int_s(0) and (not i_TDRE),
 			  i_clock => i_clock,
 			  i_enable => '1',
 			  i_async_set => '0',
@@ -148,11 +148,9 @@ BEGIN
 		 );
 		 
 		 o_setTDRE <= int_s(2);
-		 o_resetTDRE <= int_s(1);
-		 o_SO0 <= int_s(0) or int_s(1) or int_s(2);
-		 o_SO1 <= int_s(3);
-		 o_loadTDR <= int_s(1);
+		 o_SO0 <= int_s(3);
+		 o_SO1 <= int_s(0) or int_s(1) or int_s(2);
 		 o_loadTSR <= int_s(2);
-		 o_rightShiftTSR <= int_s(5) or int_s(6) or int_s(7) or int_s(8) or int_s(9) or int_s(10) or int_s(11);
+		 o_rightShiftTSR <= int_s(4) or int_s(5) or int_s(6) or int_s(7) or int_s(8) or int_s(9) or int_s(10) or int_s(11);
 		 o_s <= int_s;
 END structural;
