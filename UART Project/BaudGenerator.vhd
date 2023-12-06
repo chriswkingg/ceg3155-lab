@@ -8,30 +8,30 @@ entity BaudGenerator is
 		o_Bclk: out std_logic);
 end BaudGenerator;
 architecture behav of BaudGenerator is
-	signal int_13counter: std_logic_vector (3 downto 0):= "0000"; -- div by 13 
+	signal int_41counter: std_logic_vector (3 downto 0):= "0000"; -- div by 13 
 	signal int_256counter: std_logic_vector (7 downto 0):= "00000000"; -- div by 256 
 	signal int_8counter: std_logic_vector (2 downto 0):= "000"; -- div by 8
-	signal int_clkdiv13: std_logic;
+	signal int_clkdiv41: std_logic;
 	signal int_BclkX8 : std_logic;
 begin
 process (i_clk) -- 
 begin
 	if (i_clk'event and i_clk = '1') then
-		if (int_13counter = "1100") then 
-			int_13counter <= "0000";
+		if (int_41counter = "1100") then 
+			int_41counter <= "0000";
 		else 
-			int_13counter <= int_13counter + 1; 
+			int_41counter <= int_41counter + 1; 
 		end if;
 	end if;
 end process;
 
 
-int_clkdiv13 <= int_13counter(3); -- divide i_clk by 13
+int_clkdiv41 <= int_41counter(3); -- divide i_clk by 13
 
 
-process (int_clkdiv13) -- clk_divdr is an 8-bit counter
+process (int_clkdiv41) -- clk_divdr is an 8-bit counter
 begin
-	if (rising_edge(int_clkdiv13)) then
+	if (rising_edge(int_clkdiv41)) then
 		int_256counter <= int_256counter + 1;
 	end if;
 end process;
